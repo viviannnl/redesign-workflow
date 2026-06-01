@@ -268,8 +268,9 @@ Provide the final answer in this structure:
 7. **Page-by-Page Redesign Plan**
 8. **Implementation Phases for Claude Code**
 9. **Creativity and Reskin Check** — explain why this is more than fonts/colors/palette and what structurally changes.
-10. **Validation Checklist**
-11. **Backend/API/Product-Logic Risks** — only include real risks; otherwise say “None identified.”
+10. **Claude Code HANDOFF.md** — create a separate concise redesign-specific handoff artifact/file for the Claude Design export named `HANDOFF.md`. Include the approved design direction, key tokens, component specs, page-by-page implementation notes, structural changes, visual fidelity requirements, verification checklist, and product-logic risks.
+11. **Validation Checklist**
+12. **Backend/API/Product-Logic Risks** — only include real risks; otherwise say “None identified.”
 
 ---
 

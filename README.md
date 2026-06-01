@@ -106,6 +106,7 @@ Tell Claude Design something like:
 Use this prompt to redesign my existing app. The app is here: [repo/link/context].
 Please audit the current UI, propose style directions, then create the design system and page-by-page redesign plan.
 I want a bold, creative redesign that is specific to the product name, what the product does, and my preferred style direction, if any: [calm / playful / premium / editorial / pinky / serious developer tool / etc.]. Do not only change fonts and colors; rethink layout, hierarchy, interaction patterns, and product storytelling while preserving existing functionality.
+Also generate a redesign-specific `HANDOFF.md` file in the Claude Design export. It should summarize the approved direction, design tokens, component specs, page-by-page implementation notes, visual fidelity requirements, and any product-logic risks for Claude Code.
 ```
 
 Expected output:
@@ -118,6 +119,7 @@ Expected output:
 - Component library specification
 - Page-by-page redesign plan
 - Creativity and reskin check explaining what changed beyond fonts/colors/palette
+- A redesign-specific `HANDOFF.md` file for Claude Code inside the Claude Design export
 - Implementation phases for Claude Code
 - Validation checklist
 - Backend/API/product-logic risks, if any
@@ -146,7 +148,9 @@ The goal is to reach an approved design direction before Claude Code touches the
 
 ### Step 4: Download the Claude Design ZIP
 
-Once the design is approved, download the project/artifact ZIP from Claude Design.
+Once the design is approved, ask Claude Design to include a redesign-specific `HANDOFF.md` file in the export, then download the project/artifact ZIP from Claude Design.
+
+The exported `HANDOFF.md` should be specific to this redesign. It should tell Claude Code what to implement, including the approved design direction, key tokens, component specs, page-by-page notes, visual fidelity requirements, and any product-logic risks.
 
 Do this instead of handing Claude Code only a Claude Design share link. The ZIP gives Claude Code actual local files it can inspect, open, and compare against the implemented app.
 
@@ -156,7 +160,8 @@ Recommended setup:
 your-app/
   redesign-reference/
     claude-design-export/
-      [unzipped Claude Design files]
+      HANDOFF.md
+      [other unzipped Claude Design files]
 ```
 
 You can name the folder whatever you want, but keep the exported design files inside the app/repo directory so Claude Code can read them directly.
@@ -171,6 +176,7 @@ Give Claude Code:
 
 - The approved Claude Design output/notes
 - The local path to the unzipped Claude Design export, for example `redesign-reference/claude-design-export/`
+- The redesign-specific `HANDOFF.md` inside that export, for example `redesign-reference/claude-design-export/HANDOFF.md`
 - The app repo
 - The installed `/redesign` command or `redesign-handoff.md`
 - Local browser access so it can inspect the rendered app
@@ -191,7 +197,7 @@ If your design export is somewhere else, pass the path as an argument:
 Manual fallback prompt:
 
 ```text
-Implement this approved redesign in the existing app. Use the handoff prompt. The Claude Design ZIP has been downloaded and unzipped locally at: [path to redesign-reference/claude-design-export]. Use those local files as the design reference, not only a share link. Preserve all backend/API/auth/product behavior. Start by creating a new redesign branch from the up-to-date default branch. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the local Claude Design export, check the browser console, and capture screenshots or a short screen recording for visual verification when possible. After verification, push the branch and open a pull request for the redesign.
+Implement this approved redesign in the existing app. Use the handoff prompt. The Claude Design ZIP has been downloaded and unzipped locally at: [path to redesign-reference/claude-design-export]. First check that folder for `HANDOFF.md` and use it as the redesign-specific implementation source of truth alongside the exported design files. Use those local files as the design reference, not only a share link. Preserve all backend/API/auth/billing/product behavior. Start by creating a new redesign branch from the up-to-date default branch. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the local Claude Design export, check the browser console, and capture screenshots or a short screen recording for visual verification when possible. After verification, push the branch and open a pull request for the redesign.
 ```
 
 Expected output:
