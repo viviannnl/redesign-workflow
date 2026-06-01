@@ -17,6 +17,7 @@ This is meant for existing apps, not brand-new greenfield projects.
 | --- | --- | --- |
 | `redesign-prompt.md` | Claude Design | Explore and define the redesign. Produces the visual direction, design system, component library, page-by-page plan, and implementation phases. |
 | `redesign-handoff.md` | Claude Code | Implement the approved design in the existing codebase. Keeps changes frontend-focused and verifies behavior stays intact. |
+| `claude-code/commands/redesign.md` | Claude Code | Optional installable `/redesign` slash command so users do not need to paste the full handoff prompt every time. |
 | `design-inspiration/README.md` | You + Claude Design | Optional place to collect style references, links, screenshots, and notes before running the design prompt. |
 
 ---
@@ -31,6 +32,53 @@ For the handoff step, Claude Code should have access to:
 - Screen recording, when available
 
 This matters because visual fidelity cannot be verified from code alone. Claude Code should open the actual rendered app, compare it against the approved Claude Design artifact, check responsive states, and capture visual evidence when possible.
+
+---
+
+## Recommended Claude Code Setup: Install as a Command
+
+If you use Claude Code often, you can install this workflow as a project command.
+
+Copy:
+
+```text
+redesign-workflow/claude-code/commands/redesign.md
+```
+
+into your app:
+
+```text
+your-app/.claude/commands/redesign.md
+```
+
+Beginner-friendly terminal version from your app root:
+
+```bash
+mkdir -p .claude/commands
+cp path/to/redesign-workflow/claude-code/commands/redesign.md .claude/commands/redesign.md
+```
+
+Then place your downloaded Claude Design export at:
+
+```text
+your-app/redesign-reference/claude-design-export/
+```
+
+You can create the folder from your app root with:
+
+```bash
+mkdir -p redesign-reference/claude-design-export
+```
+
+Open Claude Code from your app root and run:
+
+```text
+/redesign
+```
+
+The command instructs Claude Code to use the local design export, create a redesign branch, implement the UI, verify it in a browser when available, push the branch, and open a PR if the repo and local tooling allow it.
+
+This is the recommended way to use the Claude Code handoff because it avoids repeatedly pasting the full handoff prompt. You can still use `redesign-handoff.md` manually if you do not want to install the command.
 
 ---
 
@@ -112,18 +160,32 @@ You can name the folder whatever you want, but keep the exported design files in
 
 ### Step 5: Hand the approved design files to Claude Code
 
-After the ZIP is downloaded and unzipped into the app directory, use `redesign-handoff.md` with Claude Code.
+After the ZIP is downloaded and unzipped into the app directory, the recommended Claude Code path is to run the installable `/redesign` slash command.
+
+You can still paste `redesign-handoff.md` manually, but installing the command is more convenient because users only need to run `/redesign` from the app root.
 
 Give Claude Code:
 
 - The approved Claude Design output/notes
 - The local path to the unzipped Claude Design export, for example `redesign-reference/claude-design-export/`
 - The app repo
-- `redesign-handoff.md`
+- The installed `/redesign` command or `redesign-handoff.md`
 - Local browser access so it can inspect the rendered app
 - Screenshot and screen-recording capability, if available
 
-Tell Claude Code something like:
+Recommended Claude Code command usage:
+
+```text
+/redesign
+```
+
+If your design export is somewhere else, pass the path as an argument:
+
+```text
+/redesign use the local Claude Design export at path/to/design-export
+```
+
+Manual fallback prompt:
 
 ```text
 Implement this approved redesign in the existing app. Use the handoff prompt. The Claude Design ZIP has been downloaded and unzipped locally at: [path to redesign-reference/claude-design-export]. Use those local files as the design reference, not only a share link. Preserve all backend/API/auth/product behavior. Start by creating a new redesign branch from the up-to-date default branch. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the local Claude Design export, check the browser console, and capture screenshots or a short screen recording for visual verification when possible. After verification, push the branch and open a pull request for the redesign.
