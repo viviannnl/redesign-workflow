@@ -172,16 +172,29 @@ Run the project’s relevant checks, such as:
 - Typecheck
 - Production build
 
-For UI changes, also manually verify:
+For UI changes, browser-based visual verification is required. Do not rely only on code review or static screenshots.
 
-- Main updated pages load successfully
+Use local browser access to open the implemented app and compare the actual rendered UI against the approved Claude Design output/artifact.
+
+Verify:
+
+- Main updated pages load successfully in the browser
+- The actual rendered layout matches the approved design structure
+- Spacing, typography, colors, surfaces, radius, shadows, and hierarchy match the approved design as closely as possible
+- Component states render correctly: hover, focus, active, disabled, loading, and error where relevant
 - Core user flows still work
 - Empty/loading/error states render correctly where possible
 - Keyboard focus states are visible
 - Mobile/responsive layout works at common breakpoints
 - Browser console has no new relevant errors
 
-If a check cannot be run, say exactly why.
+When possible, capture evidence:
+
+- Browser screenshots of the implemented pages
+- Side-by-side comparison notes against the design artifact
+- A short screen recording of the core flow and responsive behavior, especially for major redesigns
+
+If browser access, screenshots, or screen recording are unavailable, say exactly what could not be verified and why. Do not claim visual fidelity was verified unless the rendered UI was actually inspected in a browser.
 
 ---
 
@@ -194,7 +207,8 @@ When finished, report:
 3. **Behavior preserved**
 4. **Design fidelity notes**
 5. **Tests/checks run and results**
-6. **Manual UI verification performed**
-7. **Known limitations or follow-up risks**
+6. **Rendered UI comparison** — browser-tested comparison against the approved design artifact, including screenshots/screen recording if available
+7. **Manual UI verification performed**
+8. **Known limitations or follow-up risks**
 
 Do not claim completion until implementation has been verified.

@@ -21,6 +21,19 @@ This is meant for existing apps, not brand-new greenfield projects.
 
 ---
 
+## Tooling Expectation for Claude Code
+
+For the handoff step, Claude Code should have access to:
+
+- A local dev server for the app
+- A local browser it can control or inspect
+- Screenshot capture
+- Screen recording, when available
+
+This matters because visual fidelity cannot be verified from code alone. Claude Code should open the actual rendered app, compare it against the approved Claude Design artifact, check responsive states, and capture visual evidence when possible.
+
+---
+
 ## Recommended Workflow
 
 ### Step 1: Prepare your app context
@@ -90,11 +103,13 @@ Give Claude Code:
 - Any generated design file/artifact
 - The app repo
 - `redesign-handoff.md`
+- Local browser access so it can inspect the rendered app
+- Screenshot and screen-recording capability, if available
 
 Tell Claude Code something like:
 
 ```text
-Implement this approved redesign in the existing app. Use the handoff prompt. Preserve all backend/API/auth/product behavior. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build and manual UI checks.
+Implement this approved redesign in the existing app. Use the handoff prompt. Preserve all backend/API/auth/product behavior. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the approved Claude Design artifact, check the browser console, and capture screenshots or a short screen recording for visual verification when possible.
 ```
 
 Expected output:
@@ -102,6 +117,8 @@ Expected output:
 - Frontend-only implementation
 - Shared design tokens/components first
 - Page updates using the approved system
+- Browser-based comparison of the rendered UI against the approved design
+- Screenshots or screen recording when available
 - Verification results
 - Notes about any limitations or conflicts
 
