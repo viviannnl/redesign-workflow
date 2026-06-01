@@ -51,6 +51,25 @@ Frontend-only refactors are allowed when they preserve behavior and make the red
 
 Work in phases. Verify each phase before moving to the next.
 
+### Phase 0 — Create a Redesign Branch
+
+Before editing, start from an up-to-date default branch and create a new implementation branch for the redesign.
+
+Use a clear branch name, for example:
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b redesign/app-ui-refresh
+```
+
+Rules:
+
+- Do not implement the redesign directly on `main`.
+- Keep all redesign changes on the redesign branch.
+- Commit only the intended redesign files.
+- After verification, push the branch and open a pull request for review.
+
 ### Phase 1 — Inspect and Map
 
 Before editing, inspect the codebase and identify:
@@ -198,7 +217,25 @@ If browser access, screenshots, or screen recording are unavailable, say exactly
 
 ---
 
-## 7. Final Response Format
+## 7. Pull Request Requirements
+
+After implementation and verification, open a pull request for the redesign.
+
+The pull request should include:
+
+- Summary of the redesign scope
+- Files/areas changed
+- Confirmation that backend/API/auth/billing/product logic was preserved
+- Tests/checks run: lint, typecheck, build, relevant tests
+- Browser-based rendered UI comparison notes
+- Screenshots and/or screen recording links or attachments, if available
+- Known limitations, fidelity differences, or follow-up risks
+
+Do not merge the PR automatically unless the user explicitly asks for merge. The default final state is: redesign branch pushed, PR opened, and ready for human review.
+
+---
+
+## 8. Final Response Format
 
 When finished, report:
 
@@ -210,5 +247,6 @@ When finished, report:
 6. **Rendered UI comparison** — browser-tested comparison against the approved design artifact, including screenshots/screen recording if available
 7. **Manual UI verification performed**
 8. **Known limitations or follow-up risks**
+9. **Branch and PR link** — include the redesign branch name and pull request URL
 
-Do not claim completion until implementation has been verified.
+Do not claim completion until implementation has been verified and the redesign PR has been opened, unless the user explicitly asked not to create a PR.

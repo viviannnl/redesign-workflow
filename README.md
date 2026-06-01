@@ -109,17 +109,19 @@ Give Claude Code:
 Tell Claude Code something like:
 
 ```text
-Implement this approved redesign in the existing app. Use the handoff prompt. Preserve all backend/API/auth/product behavior. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the approved Claude Design artifact, check the browser console, and capture screenshots or a short screen recording for visual verification when possible.
+Implement this approved redesign in the existing app. Use the handoff prompt. Preserve all backend/API/auth/product behavior. Start by creating a new redesign branch from the up-to-date default branch. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the approved Claude Design artifact, check the browser console, and capture screenshots or a short screen recording for visual verification when possible. After verification, push the branch and open a pull request for the redesign.
 ```
 
 Expected output:
 
 - Frontend-only implementation
+- A dedicated redesign branch, not direct work on `main`
 - Shared design tokens/components first
 - Page updates using the approved system
 - Browser-based comparison of the rendered UI against the approved design
 - Screenshots or screen recording when available
 - Verification results
+- A pull request link for human review
 - Notes about any limitations or conflicts
 
 ---
