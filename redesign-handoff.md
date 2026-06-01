@@ -153,6 +153,8 @@ For each page:
 - Preserve existing data fetching and mutations
 - Replace ad-hoc UI with shared components
 - Match approved layout, spacing, hierarchy, and responsive behavior
+- Implement approved structural changes to page composition, navigation, content grouping, data visualization using existing frontend-available fields only, and frontend interaction patterns using existing routes/actions only when they do not require backend/product-logic changes
+- Do not hide or de-emphasize critical controls, legal/compliance content, permission/auth states, destructive actions, pricing/billing information, errors, or required workflow steps
 - Cover empty, loading, error, and permission/auth states
 - Avoid one-off styling unless absolutely necessary, and explain any exception
 
@@ -175,7 +177,9 @@ After pages are updated, search for and clean up:
 
 Match the approved redesign for:
 
-- Layout structure
+- Layout structure and page composition
+- Information hierarchy and content grouping
+- Product-specific creative concept, visual motif, and signature interactions
 - Spacing rhythm
 - Typography hierarchy
 - Color usage
@@ -186,6 +190,8 @@ Match the approved redesign for:
 - Icon treatment
 - Empty/loading/error states
 - Mobile and tablet behavior
+
+Do not reduce a bold approved redesign to a token-only reskin. If the approved design changes layout, navigation, page composition, data visualization, or interaction patterns, implement those structural changes as long as they use existing frontend-available data, routes, permissions, and actions and preserve existing product behavior.
 
 If exact fidelity is impossible because of existing constraints, explain the constraint and implement the closest safe version.
 
@@ -209,6 +215,7 @@ Verify:
 
 - Main updated pages load successfully in the browser
 - The actual rendered layout matches the approved design structure
+- Structural changes from the approved design are present, not just font/color/palette changes
 - Spacing, typography, colors, surfaces, radius, shadows, and hierarchy match the approved design as closely as possible
 - Component states render correctly: hover, focus, active, disabled, loading, and error where relevant
 - Core user flows still work

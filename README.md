@@ -105,16 +105,19 @@ Tell Claude Design something like:
 ```text
 Use this prompt to redesign my existing app. The app is here: [repo/link/context].
 Please audit the current UI, propose style directions, then create the design system and page-by-page redesign plan.
+I want a bold, creative redesign that is specific to the product name, what the product does, and my preferred style direction, if any: [calm / playful / premium / editorial / pinky / serious developer tool / etc.]. Do not only change fonts and colors; rethink layout, hierarchy, interaction patterns, and product storytelling while preserving existing functionality.
 ```
 
 Expected output:
 
 - Existing app audit
+- Product-specific creative strategy
 - Design direction
 - Optional style direction options
 - Design system definition
 - Component library specification
 - Page-by-page redesign plan
+- Creativity and reskin check explaining what changed beyond fonts/colors/palette
 - Implementation phases for Claude Code
 - Validation checklist
 - Backend/API/product-logic risks, if any
@@ -211,9 +214,11 @@ You do not need to know the exact style upfront. A good redesign process can dis
 
 If you are unsure, ask Claude Design for 3 directions:
 
-1. **Conservative** — closest to the current app; safest implementation.
-2. **Strong-fit** — the best balanced recommendation for your product and audience.
-3. **Divergent** — more distinctive and opinionated; useful for finding taste boundaries.
+1. **Evolutionary** — improves the current product while still changing layout and hierarchy meaningfully.
+2. **Strong-fit bold** — the best balanced recommendation for your product name, audience, workflow, and requested style.
+3. **Revolutionary** — more distinctive and opinionated; useful when you want a very creative redesign that changes composition, interaction patterns, and product storytelling while preserving behavior.
+
+The goal is not just a new palette. A strong redesign should connect the visual system to what the product does and should change layout, hierarchy, components, states, and interaction patterns where that makes the product clearer or more memorable.
 
 Then react to what you see. You can say what feels right or wrong in normal language:
 

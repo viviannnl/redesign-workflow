@@ -139,6 +139,8 @@ For each page:
 - Preserve existing data fetching and mutations
 - Replace ad-hoc UI with shared components
 - Match approved layout, spacing, hierarchy, and responsive behavior
+- Implement approved structural changes to page composition, navigation, content grouping, data visualization using existing frontend-available fields only, and frontend interaction patterns using existing routes/actions only when they do not require backend/product-logic changes
+- Do not hide or de-emphasize critical controls, legal/compliance content, permission/auth states, destructive actions, pricing/billing information, errors, or required workflow steps
 - Cover empty, loading, error, and permission/auth states
 - Avoid one-off styling unless absolutely necessary, and explain any exception
 
@@ -173,6 +175,7 @@ Verify:
 
 - Main updated pages load successfully in the browser
 - The actual rendered layout matches the approved design structure
+- Structural changes from the approved design are present, not just font/color/palette changes
 - Spacing, typography, colors, surfaces, radius, shadows, and hierarchy match the approved design as closely as possible
 - Component states render correctly: hover, focus, active, disabled, loading, and error where relevant
 - Core user flows still work
