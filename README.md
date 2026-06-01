@@ -93,14 +93,31 @@ This feels too generic SaaS. Make it more editorial, calmer, and more founder-to
 
 The goal is to reach an approved design direction before Claude Code touches the app.
 
-### Step 4: Hand the approved design to Claude Code
+### Step 4: Download the Claude Design ZIP
 
-Once the design is approved, use `redesign-handoff.md` with Claude Code.
+Once the design is approved, download the project/artifact ZIP from Claude Design.
+
+Do this instead of handing Claude Code only a Claude Design share link. The ZIP gives Claude Code actual local files it can inspect, open, and compare against the implemented app.
+
+Recommended setup:
+
+```text
+your-app/
+  redesign-reference/
+    claude-design-export/
+      [unzipped Claude Design files]
+```
+
+You can name the folder whatever you want, but keep the exported design files inside the app/repo directory so Claude Code can read them directly.
+
+### Step 5: Hand the approved design files to Claude Code
+
+After the ZIP is downloaded and unzipped into the app directory, use `redesign-handoff.md` with Claude Code.
 
 Give Claude Code:
 
-- The approved Claude Design output
-- Any generated design file/artifact
+- The approved Claude Design output/notes
+- The local path to the unzipped Claude Design export, for example `redesign-reference/claude-design-export/`
 - The app repo
 - `redesign-handoff.md`
 - Local browser access so it can inspect the rendered app
@@ -109,7 +126,7 @@ Give Claude Code:
 Tell Claude Code something like:
 
 ```text
-Implement this approved redesign in the existing app. Use the handoff prompt. Preserve all backend/API/auth/product behavior. Start by creating a new redesign branch from the up-to-date default branch. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the approved Claude Design artifact, check the browser console, and capture screenshots or a short screen recording for visual verification when possible. After verification, push the branch and open a pull request for the redesign.
+Implement this approved redesign in the existing app. Use the handoff prompt. The Claude Design ZIP has been downloaded and unzipped locally at: [path to redesign-reference/claude-design-export]. Use those local files as the design reference, not only a share link. Preserve all backend/API/auth/product behavior. Start by creating a new redesign branch from the up-to-date default branch. Work in phases: tokens, shared components, then pages. Verify with lint/typecheck/build. Then use local browser access to open the app, compare the actual rendered UI against the local Claude Design export, check the browser console, and capture screenshots or a short screen recording for visual verification when possible. After verification, push the branch and open a pull request for the redesign.
 ```
 
 Expected output:

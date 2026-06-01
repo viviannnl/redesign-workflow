@@ -10,6 +10,14 @@ This is an implementation handoff, not a new design exercise.
 
 Apply the approved design system, component specifications, and page-by-page redesign plan to the existing production app.
 
+Use the downloaded and unzipped Claude Design export as the local source of truth for visual reference. Do not rely only on a Claude Design share link; the design files should be present inside the app/repo directory so they can be inspected directly.
+
+Recommended reference location:
+
+```text
+redesign-reference/claude-design-export/
+```
+
 Prioritize:
 
 - Visual fidelity to the approved design direction
@@ -80,6 +88,7 @@ Before editing, inspect the codebase and identify:
 - Existing design tokens/global styles
 - Existing state handling for loading, empty, error, disabled, and auth states
 - Where the approved design system should map into the code
+- Where the local Claude Design export lives and which files should be used as visual references
 
 Output a short mapping:
 
@@ -87,6 +96,7 @@ Output a short mapping:
 - Shared components to update/create
 - Pages/routes to update
 - Any risky areas where behavior must be preserved
+- Local design reference path, for example `redesign-reference/claude-design-export/`
 
 ### Phase 2 — Tokens and Global Styles
 
@@ -193,7 +203,7 @@ Run the project’s relevant checks, such as:
 
 For UI changes, browser-based visual verification is required. Do not rely only on code review or static screenshots.
 
-Use local browser access to open the implemented app and compare the actual rendered UI against the approved Claude Design output/artifact.
+Use local browser access to open the implemented app and compare the actual rendered UI against the local Claude Design export/artifact files.
 
 Verify:
 
