@@ -105,7 +105,7 @@ Tell Claude Design something like:
 ```text
 Use this prompt to redesign my existing app. The app is here: [repo/link/context].
 Please audit the current UI, propose style directions, then create the design system and page-by-page redesign plan.
-I want a bold, creative redesign that is specific to the product name, what the product does, and my preferred style direction, if any: [calm / playful / premium / editorial / pinky / serious developer tool / etc.]. Do not only change fonts and colors; rethink layout, hierarchy, interaction patterns, and product storytelling while preserving existing functionality.
+I want a bold, creative redesign that is specific to the product name, what the product does, and my preferred style direction, if any: [calm / playful / premium / editorial / pinky / serious developer tool / etc.]. Do not only change fonts and colors; rethink layout, hierarchy, interaction patterns, user experience, and product storytelling while preserving existing functionality. Make sure the product makes sense for real users and that the main flows become easier, clearer, more trustworthy, or more enjoyable to use.
 Also generate a redesign-specific `HANDOFF.md` file in the Claude Design export. It should summarize the approved direction, design tokens, component specs, page-by-page implementation notes, visual fidelity requirements, and any product-logic risks for Claude Code.
 ```
 
@@ -113,12 +113,13 @@ Expected output:
 
 - Existing app audit
 - Product-specific creative strategy
+- User experience and product-fit analysis
 - Design direction
 - Optional style direction options
 - Design system definition
 - Component library specification
 - Page-by-page redesign plan
-- Creativity and reskin check explaining what changed beyond fonts/colors/palette
+- Creativity, UX, and reskin check explaining what changed beyond fonts/colors/palette and how the experience improves for users
 - A redesign-specific `HANDOFF.md` file for Claude Code inside the Claude Design export
 - Implementation phases for Claude Code
 - Validation checklist

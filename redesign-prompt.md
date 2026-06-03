@@ -18,6 +18,7 @@ Optimize for:
 - Visual consistency across every page and state
 - Clearer information hierarchy and stronger page composition
 - Better usability for real users
+- A user experience that makes sense for the product’s actual audience, workflow, emotional context, and level of complexity
 - Creative but usable layout, navigation, and component patterns
 - Cleaner, more premium, modern UI
 - Reusable components instead of one-off page styling
@@ -110,6 +111,28 @@ Output:
 - How the user’s requested style preference should influence color, typography, surfaces, layout, motion, and tone
 - What would count as a shallow reskin for this product and must be avoided
 
+### Step 2.5 — User Experience and Product Fit
+
+Before proposing final style directions, evaluate whether the product experience itself makes sense for real users. Do not judge the redesign only by visual polish.
+
+Analyze:
+
+- What the main user is trying to accomplish and what they need to understand first
+- Whether the current main flow is obvious, confusing, too slow, too dense, or missing helpful guidance
+- Whether each page makes the next action clear without overwhelming the user
+- Whether the information hierarchy matches the user’s real decision-making order
+- Whether navigation, layout, and grouping fit the product category and workflow
+- Whether empty, loading, error, disabled, success, and permission/auth states help the user recover or continue
+- Whether the tone and interaction model match the product’s audience, emotional context, and trust level
+- Whether the redesign reduces confusion and cognitive load instead of adding decoration
+
+Output:
+
+- 3–5 user experience principles for this specific product
+- The most important user flow improvements to preserve in the redesign
+- Product-fit risks where a visually interesting idea might make the product harder to use or less trustworthy
+- What the redesign should make easier, clearer, faster, calmer, or more confidence-building for users
+
 ### Step 3 — Style Direction Exploration
 
 Before defining the final design system, propose style directions for the redesign.
@@ -130,6 +153,7 @@ For each direction, include:
 - 3–5 words describing the feel
 - Best-fit audience/product rationale
 - Product-name/product-purpose connection
+- User experience rationale: why this direction makes the product easier, clearer, more trustworthy, or more enjoyable to use
 - Visual principles: typography, color posture, spacing/density, surfaces, motion
 - Structural changes: navigation, page composition, hero/dashboard model, data visualization using existing frontend-available fields only, and frontend interaction patterns using existing routes, data, permissions, and actions only
 - Signature moments: 2–3 memorable UI ideas that make the product feel distinctive without implying unsupported functionality
@@ -199,6 +223,7 @@ For every page/route, provide:
 
 - Current purpose of the page
 - Main user action on the page
+- User experience goal: what should feel easier, clearer, faster, calmer, or more confidence-building for the user
 - Structural layout changes, not just styling changes
 - Information hierarchy changes: what becomes more prominent, grouped, collapsed, or sequenced differently
 - Product-specific creative treatment: metaphor, visual motif, data/storytelling model using existing frontend-available fields only, or signature interaction using existing routes/actions only
@@ -241,6 +266,8 @@ Before final output, check for:
 
 - Reskin-only changes where the layout, hierarchy, and interaction model stayed essentially the same
 - Weak connection between the visual direction and the product name, product purpose, target user, or requested style
+- Product-fit issues where the UI looks interesting but makes the real user flow harder to understand or complete
+- User experience gaps where the next action, system state, recovery path, or success state is unclear
 - Inconsistent spacing, typography, colors, or radius values
 - Duplicate components solving the same UI problem
 - Missing hover/focus/disabled/loading/error states
@@ -261,16 +288,17 @@ Provide the final answer in this structure:
 
 1. **Existing App Audit**
 2. **Product-Specific Creative Strategy**
-3. **Style Direction Options and Recommendation**
-4. **Chosen/Recommended Design Direction**
-5. **Design System Definition**
-6. **Component Library Specification**
-7. **Page-by-Page Redesign Plan**
-8. **Implementation Phases for Claude Code**
-9. **Creativity and Reskin Check** — explain why this is more than fonts/colors/palette and what structurally changes.
-10. **Claude Code HANDOFF.md** — create a separate concise redesign-specific handoff artifact/file for the Claude Design export named `HANDOFF.md`. Include the approved design direction, key tokens, component specs, page-by-page implementation notes, structural changes, visual fidelity requirements, verification checklist, and product-logic risks.
-11. **Validation Checklist**
-12. **Backend/API/Product-Logic Risks** — only include real risks; otherwise say “None identified.”
+3. **User Experience and Product Fit**
+4. **Style Direction Options and Recommendation**
+5. **Chosen/Recommended Design Direction**
+6. **Design System Definition**
+7. **Component Library Specification**
+8. **Page-by-Page Redesign Plan**
+9. **Implementation Phases for Claude Code**
+10. **Creativity, UX, and Reskin Check** — explain why this is more than fonts/colors/palette, what structurally changes, and how the experience becomes clearer or better for users.
+11. **Claude Code HANDOFF.md** — create a separate concise redesign-specific handoff artifact/file for the Claude Design export named `HANDOFF.md`. Include the approved design direction, key tokens, component specs, page-by-page implementation notes, structural changes, visual fidelity requirements, verification checklist, and product-logic risks.
+12. **Validation Checklist**
+13. **Backend/API/Product-Logic Risks** — only include real risks; otherwise say “None identified.”
 
 ---
 
@@ -281,6 +309,8 @@ The redesign plan is successful if:
 - The app remains functionally the same
 - The UI has one coherent design system
 - The creative direction is tied to the product name, product purpose, target user, and requested style preference
+- The user experience makes sense for the product’s real audience, workflow, emotional context, and complexity
+- The redesign makes important user flows easier to understand, complete, recover from, or trust
 - The redesign changes more than fonts, colors, and palette; it improves layout, hierarchy, composition, interaction, or product storytelling
 - Shared components are redesigned before pages
 - Every page uses the shared system instead of ad-hoc styling
